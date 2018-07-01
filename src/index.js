@@ -1,4 +1,4 @@
-const dictionary = require("dictionary");
+const dictionary = require("./dictionary");
 
 new Promise((result, error) => {
 	if (process.argv[2] == "-e" || "--encrypt") {
