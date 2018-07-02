@@ -6,35 +6,38 @@ class Dictionary {
 		for (let i = 0; i < this.letters.length; i++) {
 			let letter = this.letters[i];
 
-			this.dictionary[letter] = ToBinary(i);
+			this.dictionary[letter] = ToBinary(i + 1);
 			console.log(this.dictionary[letter]);
 		}
 	}
 }
 
-function ToBinary(number) {
-	let result = "00000";
+new Dictionary()
 
-	while (number > 0) {
-		if (number / 16 != 0) {
-			result[0] = 1;
-			number -= 16;
-		} else if (number / 8 != 0) {
-			result[1] = 1;
-			number -= 8;
-		} else if (number / 4 != 0) {
-			result[2] = 1;
-			number -= 4;
-		} else if (number / 2 != 0) {
-			result[3] = 1;
-			number -= 2;
-		} else if (number / 1 != 0) {
-			result[4] = 1;
-			number -= 1;
+function ToBinary(number) {
+	let num = number;
+	let result = ["0", "0", "0", "0", "0"];
+
+	while (num > 0) {
+		if (num >= 16) {
+			result[0] = "1";
+			num -= 16;
+		} else if (num >= 8) {
+			result[1] = "1";
+			num -= 8;
+		} else if (num >= 4) {
+			result[2] = "1";
+			num -= 4;
+		} else if (num >= 2) {
+			result[3] = "1";
+			num -= 2;
+		} else if (num >= 1) {
+			result[4] = "1";
+			num -= 1;
 		}
 	}
 
-	return result;
+	return result.join(" ");
 }
 
 function ToNumber(binary) {
