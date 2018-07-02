@@ -1,12 +1,12 @@
 class Dictionary {
 	constructor() {
 		this.dictionary = {};
-		this.letters = "abcdefjhijklmnopqrstuvwxyz";
+		this.letters = " abcdefjhijklmnopqrstuvwxyz";
 
 		for (let i = 0; i < this.letters.length; i++) {
 			let letter = this.letters[i];
 
-			this.dictionary[letter] = ToBinary(i + 1);
+			this.dictionary[letter] = ToBinary(i);
 		}
 	}
 }
