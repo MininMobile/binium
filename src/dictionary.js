@@ -7,12 +7,9 @@ class Dictionary {
 			let letter = this.letters[i];
 
 			this.dictionary[letter] = ToBinary(i + 1);
-			console.log(this.dictionary[letter]);
 		}
 	}
 }
-
-new Dictionary()
 
 function ToBinary(number) {
 	let num = number;
@@ -37,11 +34,24 @@ function ToBinary(number) {
 		}
 	}
 
-	return result.join(" ");
+	return result.join("");
 }
 
 function ToNumber(binary) {
+	let bin = [];
+	let result = 0;
+	
+	for (let i = 0; i < 5; i++) bin.push(binary[i]);
 
+	for (let i = 0; i < 5; i++) {
+		if (i == 0) if (bin[i] == 1) result += 16;
+		if (i == 1) if (bin[i] == 1) result += 8;
+		if (i == 2) if (bin[i] == 1) result += 4;
+		if (i == 3) if (bin[i] == 1) result += 2;
+		if (i == 4) if (bin[i] == 1) result += 1;
+	}
+
+	return result;
 }
 
 module.exports = exports = {

@@ -2,7 +2,7 @@ const dictionary = require("./dictionary");
 
 new Promise((result, error) => {
 	if (process.argv[2] == "-e" || "--encrypt") {
-		result("encrypt argument");
+		console.log(dictionary.ToNumber("00011s"));
 	} else if (process.argv[2] == "d" || "--decrypt") {
 		result("decrypt argument");
 	} else {
