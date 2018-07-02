@@ -1,7 +1,7 @@
 const dictionary = require("./dictionary");
 const fs = require("fs");
 
-if (process.argv[2] == "-e" || process.argv[2] == "--encrypt") {
+if (process.argv[2] == "-e" || process.argv[2] == "--encode") {
 	console.log("Encoding please wait...");
 	fs.readFile(process.argv[3], "utf-8", (err, data) => {
 		let dict = new dictionary.Dictionary();
@@ -19,7 +19,7 @@ if (process.argv[2] == "-e" || process.argv[2] == "--encrypt") {
 
 		fs.writeFile(process.argv[4], result, (err) => { console.log("Operation complete!"); });
 	});
-} else if (process.argv[2] == "-d" || process.argv[2] == "--decrypt") {
+} else if (process.argv[2] == "-d" || process.argv[2] == "--decode") {
 	console.log("Decoding please wait...");
 	fs.readFile(process.argv[3], "utf-8", (err, data) => {
 		let dict = new dictionary.Dictionary();
@@ -37,6 +37,6 @@ if (process.argv[2] == "-e" || process.argv[2] == "--encrypt") {
 	});
 } else {
 	console.log("None or invalid arguments, help:");
-	console.log("\t-e --encrypt input output | encrypt input and output to output");
-	console.log("\t-d --decrypt input output | decrypt input and output to output");
+	console.log("\t-e --encode input output | encode input and output to output");
+	console.log("\t-d --decode input output | decode input and output to output");
 }
