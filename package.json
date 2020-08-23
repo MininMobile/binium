@@ -2,18 +2,18 @@
   "name": "binium",
   "version": "1.0.0",
   "description": "a binary text encoder",
-  "main": "./src/index.js",
+  "main": "cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MininMobile/binium.git"
+    "url": "git+https://github.com/mininmobile/binium.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MininMobile/binium/issues"
+    "url": "https://github.com/mininmobile/binium/issues"
   },
-  "homepage": "https://github.com/MininMobile/binium#readme"
+  "homepage": "https://github.com/mininmobile/binium#readme"
 }
