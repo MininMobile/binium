@@ -14,7 +14,15 @@ if (args[0] == "--help" || args[0] == "-h" || args[0] == "/?" || args[0] == unde
 	].join("\n"));
 } else {
 	if (args[0] == "/e" || args[0] == "-e" || args[0] == "--encode") {
+		fs.readFile(args[1], "utf8", (err, raw) => {
+			let encoded = "";
 
+			for (let i = 0; i < raw.length; i++) {
+				encoded += raw[i].charCodeAt(0).toString(2);
+			}
+
+			console.log(encoded);
+		});
 	} else if (args[0] == "/d" || args[0] == "-d" || args[0] == "--decode") {
 
 	} else {
