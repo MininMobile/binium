@@ -4,7 +4,7 @@ let args = process.argv.splice(2).map(x => x.toLowerCase());
 
 if (args[0] == "--help" || args[0] == "-h" || args[0] == "/?" || args[0] == undefined) {
 	console.log([
-		"usage: node . -[e|d|h] [in] [out]",
+		"usage: node . -e|d|h [in] [out]",
 		"options:",
 		"  /? -h --help             \tshows this message",
 		"  /e -e --encode [in]      \tencode a file and print output to stdout",
@@ -44,6 +44,6 @@ if (args[0] == "--help" || args[0] == "-h" || args[0] == "/?" || args[0] == unde
 			}
 		});
 	} else {
-		console.error(`you are dumb and '${args[0]}' is an invalid command`);
+		console.error(" \033[31;1m→  you are dumb and '" + args[0] + "' is an invalid command \033[m");
 	}
 }
