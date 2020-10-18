@@ -4,7 +4,7 @@ let args = process.argv.splice(2).map(x => x.toLowerCase());
 
 if (args[0] == "--help" || args[0] == "-h" || args[0] == "/?" || args[0] == undefined) {
 	console.log([
-		"usage: node . -[e|d|h] [in] [out]",
+		"usage: node . -e|d|h [in] [out]",
 		"options:",
 		"  /? -h --help             \tshows this message",
 		"  /e -e --encode [in]      \tencode a file and print output to stdout",
@@ -18,10 +18,15 @@ if (args[0] == "--help" || args[0] == "-h" || args[0] == "/?" || args[0] == unde
 			let encoded = "";
 
 			for (let i = 0; i < raw.length; i++) {
-				encoded += raw[i].charCodeAt(0).toString(2);
+				encoded += raw[i].charCodeAt(0).toString(2).padStart(8, "0");
 			}
 
-			console.log(encoded);
+			if (args[2]) {
+				fs.writeFile(args[2], encoded, () =>
+					console.log(` →  saved stdout to '${args[2]}'`));
+			} else {
+				process.stdout.write(encoded);
+			}
 		});
 	} else if (args[0] == "/d" || args[0] == "-d" || args[0] == "--decode") {
 		fs.readFile(args[1], "utf8", (err, raw) => {
@@ -31,9 +36,14 @@ if (args[0] == "--help" || args[0] == "-h" || args[0] == "/?" || args[0] == unde
 				decoded += String.fromCharCode(parseInt(raw.substr(i, 8), 2));
 			}
 
-			console.log(decoded);
+			if (args[2]) {
+				fs.writeFile(args[2], decoded, () =>
+					console.log(` →  saved stdout to '${args[2]}'`));
+			} else {
+				process.stdout.write(decoded);
+			}
 		});
 	} else {
-		console.error(`you are dumb and '${args[0]}' is an invalid command`);
+		console.error(" \033[31;1m→  you are dumb and '" + args[0] + "' is an invalid command \033[m");
 	}
 }
