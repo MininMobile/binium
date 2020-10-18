@@ -24,7 +24,15 @@ if (args[0] == "--help" || args[0] == "-h" || args[0] == "/?" || args[0] == unde
 			console.log(encoded);
 		});
 	} else if (args[0] == "/d" || args[0] == "-d" || args[0] == "--decode") {
+		fs.readFile(args[1], "utf8", (err, raw) => {
+			let decoded = "";
 
+			for (let i = 0; i < raw.length; i += 8) {
+				decoded += String.fromCharCode(parseInt(raw.substr(i, 8), 2));
+			}
+
+			console.log(decoded);
+		});
 	} else {
 		console.error(`you are dumb and '${args[0]}' is an invalid command`);
 	}
