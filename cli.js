@@ -18,7 +18,7 @@ if (args[0] == "--help" || args[0] == "-h" || args[0] == "/?" || args[0] == unde
 			let encoded = "";
 
 			for (let i = 0; i < raw.length; i++) {
-				encoded += raw[i].charCodeAt(0).toString(2);
+				encoded += raw[i].charCodeAt(0).toString(2).padStart(8, "0");
 			}
 
 			if (args[2]) {
